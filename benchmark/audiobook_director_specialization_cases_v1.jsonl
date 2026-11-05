@@ -1,0 +1,60 @@
+{"case_id":"narration_01","family":"narration","source_text":"Poranek rozlał się nad doliną. Mgła powoli ustępowała światłu.","expected_speaker":"narrator"}
+{"case_id":"narration_02","family":"narration","source_text":"Kamienne schody prowadziły ku rzece, której nie było widać zza drzew.","expected_speaker":"narrator"}
+{"case_id":"narration_03","family":"narration","source_text":"W bibliotece pachniało kurzem i mokrym drewnem. Zegar odmierzał ciszę.","expected_speaker":"narrator"}
+{"case_id":"narration_04","family":"narration","source_text":"Śnieg przykrył dachy, a uliczne latarnie zapaliły się wcześniej niż zwykle.","expected_speaker":"narrator"}
+{"case_id":"narration_05","family":"narration","source_text":"Pociąg zniknął za zakrętem. Na peronie została tylko para unosząca się nad torami.","expected_speaker":"narrator"}
+{"case_id":"narration_06","family":"narration","source_text":"W ogrodzie dojrzewały jabłka, ciężkie od letniego słońca.","expected_speaker":"narrator"}
+{"case_id":"narration_07","family":"narration","source_text":"Morze było spokojne, lecz wiatr poruszał zasłoną w otwartym oknie.","expected_speaker":"narrator"}
+{"case_id":"narration_08","family":"narration","source_text":"Na biurku leżał list. Koperta była zamknięta i pozbawiona adresu.","expected_speaker":"narrator"}
+{"case_id":"narration_09","family":"narration","source_text":"Miasto budziło się powoli, piętro po piętrze, światło po świetle.","expected_speaker":"narrator"}
+{"case_id":"narration_10","family":"narration","source_text":"Drzwi otworzyły się bez skrzypnięcia. Za nimi czekał pusty korytarz.","expected_speaker":"narrator"}
+{"case_id":"calm_01","family":"calm","source_text":"Anna odłożyła kubek. — Możemy zacząć, kiedy będziesz gotowy — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"calm_02","family":"calm","source_text":"Marek spojrzał przez okno. — Mamy jeszcze dużo czasu — powiedział.","expected_speaker":"Marek"}
+{"case_id":"calm_03","family":"calm","source_text":"— Usiądźmy tutaj — powiedziała Anna. — Jest ciszej.","expected_speaker":"Anna"}
+{"case_id":"calm_04","family":"calm","source_text":"— Herbata jest jeszcze ciepła — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"calm_05","family":"calm","source_text":"Anna uśmiechnęła się. — Dobrze, spróbujmy jeszcze raz — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"calm_06","family":"calm","source_text":"Marek zamknął notes. — To wystarczy na dziś — powiedział.","expected_speaker":"Marek"}
+{"case_id":"calm_07","family":"calm","source_text":"— Nie musisz się spieszyć — powiedziała Anna.","expected_speaker":"Anna"}
+{"case_id":"calm_08","family":"calm","source_text":"— Jutro wrócimy do tego tematu — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"calm_09","family":"calm","source_text":"Anna poprawiła koc. — Odpocznij chwilę — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"calm_10","family":"calm","source_text":"Marek nalał wody. — Proszę, napij się — powiedział.","expected_speaker":"Marek"}
+{"case_id":"intimate_01","family":"intimate","source_text":"Anna przysunęła się bliżej. — Zostań jeszcze chwilę — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"intimate_02","family":"intimate","source_text":"— Pamiętam ten wieczór — powiedział Marek, dotykając jej dłoni.","expected_speaker":"Marek"}
+{"case_id":"intimate_03","family":"intimate","source_text":"Anna oparła czoło o jego ramię. — Nie musisz nic mówić — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"intimate_04","family":"intimate","source_text":"— Słyszę twój oddech — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"intimate_05","family":"intimate","source_text":"Anna ścisnęła jego palce. — Jestem tutaj — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"intimate_06","family":"intimate","source_text":"— Możesz mi zaufać — powiedział Marek cicho.","expected_speaker":"Marek"}
+{"case_id":"intimate_07","family":"intimate","source_text":"Anna przymknęła oczy. — Nie odchodź — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"intimate_08","family":"intimate","source_text":"— To nasza tajemnica — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"intimate_09","family":"intimate","source_text":"Anna położyła głowę na jego ramieniu. — Dziękuję — powiedziała.","expected_speaker":"Anna"}
+{"case_id":"intimate_10","family":"intimate","source_text":"— Jutro będzie łatwiej — powiedział Marek, nie puszczając jej dłoni.","expected_speaker":"Marek"}
+{"case_id":"whisper_01","family":"whisper","source_text":"— Nie budź go — szepnęła Anna.","expected_speaker":"Anna"}
+{"case_id":"whisper_02","family":"whisper","source_text":"— Za drzwiami ktoś jest — szepnął Marek.","expected_speaker":"Marek"}
+{"case_id":"whisper_03","family":"whisper","source_text":"Anna pochyliła się. — Słuchaj uważnie — szepnęła.","expected_speaker":"Anna"}
+{"case_id":"whisper_04","family":"whisper","source_text":"— Nie zapalaj światła — szepnął Marek.","expected_speaker":"Marek"}
+{"case_id":"whisper_05","family":"whisper","source_text":"— Jestem tu — szepnęła Anna zza zasłony.","expected_speaker":"Anna"}
+{"case_id":"whisper_06","family":"whisper","source_text":"Marek pochylił się nad mapą. — Tędy — szepnął.","expected_speaker":"Marek"}
+{"case_id":"whisper_07","family":"whisper","source_text":"— Cicho — szepnęła Anna.","expected_speaker":"Anna"}
+{"case_id":"whisper_08","family":"whisper","source_text":"— Poczekaj na znak — szepnął Marek.","expected_speaker":"Marek"}
+{"case_id":"whisper_09","family":"whisper","source_text":"Anna zasłoniła usta. — On nas usłyszy — szepnęła.","expected_speaker":"Anna"}
+{"case_id":"whisper_10","family":"whisper","source_text":"— Nie ruszaj się — szepnął Marek.","expected_speaker":"Marek"}
+{"case_id":"pace_pause_01","family":"pace_pause","source_text":"Nikt się nie poruszył. W pokoju zapadła długa cisza.","expected_speaker":"narrator","target":"long_pause"}
+{"case_id":"pace_pause_02","family":"pace_pause","source_text":"Słowa wypowiadano powoli, z namysłem, między długimi oddechami.","expected_speaker":"narrator","target":"very_slow"}
+{"case_id":"pace_pause_03","family":"pace_pause","source_text":"Pobiegli przez korytarz, nie oglądając się za siebie.","expected_speaker":"narrator","target":"fast"}
+{"case_id":"pace_pause_04","family":"pace_pause","source_text":"Zatrzymała się. Jedna sekunda. Druga. Dopiero potem nacisnęła klamkę.","expected_speaker":"narrator","target":"long_pause"}
+{"case_id":"pace_pause_05","family":"pace_pause","source_text":"— Mów wolniej — powiedziała Anna. — Chcę wszystko zapamiętać.","expected_speaker":"Anna","target":"slow"}
+{"case_id":"pace_pause_06","family":"pace_pause","source_text":"— Uciekaj! — krzyknął Marek, a jego głos przeciął ciszę.","expected_speaker":"Marek","target":"fast"}
+{"case_id":"pace_pause_07","family":"pace_pause","source_text":"Deszcz stukał o dach. Każda kropla miała własny rytm.","expected_speaker":"narrator","target":"slow"}
+{"case_id":"pace_pause_08","family":"pace_pause","source_text":"Przez chwilę słuchali tylko oddechów. Potem zegar wybił północ.","expected_speaker":"narrator","target":"long_pause"}
+{"case_id":"pace_pause_09","family":"pace_pause","source_text":"Marek mówił szybko, urywając zdania i połykając końcówki słów.","expected_speaker":"narrator","target":"fast"}
+{"case_id":"pace_pause_10","family":"pace_pause","source_text":"Anna czytała list powoli, zatrzymując się przy każdym imieniu.","expected_speaker":"narrator","target":"slow"}
+{"case_id":"speaker_01","family":"speaker","source_text":"— Czy to ty? — zapytała Anna.","expected_speaker":"Anna"}
+{"case_id":"speaker_02","family":"speaker","source_text":"— Tak, to ja — odpowiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"speaker_03","family":"speaker","source_text":"— Kto tam? — dobiegło zza drzwi.","expected_speaker":"unknown"}
+{"case_id":"speaker_04","family":"speaker","source_text":"— Nie wiem — powiedziała Anna.","expected_speaker":"Anna"}
+{"case_id":"speaker_05","family":"speaker","source_text":"— Wracajmy — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"speaker_06","family":"speaker","source_text":"„Pomóż mi” — wyszeptał głos zza ściany.","expected_speaker":"unknown"}
+{"case_id":"speaker_07","family":"speaker","source_text":"— Zaczekaj — powiedziała Anna — jeszcze nie teraz.","expected_speaker":"Anna"}
+{"case_id":"speaker_08","family":"speaker","source_text":"— Otwórz — powiedział Marek.","expected_speaker":"Marek"}
+{"case_id":"speaker_09","family":"speaker","source_text":"— Słyszysz? — zapytała nieznajoma osoba.","expected_speaker":"unknown"}
+{"case_id":"speaker_10","family":"speaker","source_text":"— To niemożliwe — powiedział Marek.","expected_speaker":"Marek"}

@@ -1,0 +1,84 @@
+{
+  "fixture_id": "audiobook_director_fixture_v1",
+  "approved_by": "human_author",
+  "status": "approved_fixture",
+  "project_id": "audioticon-test",
+  "scene_id": "corridor-lantern-01",
+  "source_text": "Na końcu korytarza paliła się latarnia. Ton głosu narratora był spokojny, a słowo Styl pojawiło się w notatce; Uwagi należały do autora.\n\n— Słyszysz to? — zapytała Anna.\n\nZza drzwi dobiegł metaliczny trzask.\n\n— Biegnij! — krzyknął Marek.\n\n— Nie otwierajcie... — powiedział nieznajomy.",
+  "proposal": {
+    "project_id": "audioticon-test",
+    "scene_id": "corridor-lantern-01",
+    "source_text_hash": "10e3f95c3776b0916e95d7db43d3c52b694cb442c42f53349cf97df8dd8ee9bd",
+    "status": "approved_fixture",
+    "segments": [
+      {
+        "index": 0,
+        "speaker": "narrator",
+        "text": "Na końcu korytarza paliła się latarnia. Ton głosu narratora był spokojny, a słowo Styl pojawiło się w notatce; Uwagi należały do autora.",
+        "voice": "pl_PL-darkman-medium",
+        "emotion": "calm",
+        "pace": "normal",
+        "pitch": "normal",
+        "pause_before_ms": 0,
+        "pause_after_ms": 400,
+        "sound_cues": []
+      },
+      {
+        "index": 1,
+        "speaker": "Anna",
+        "text": "— Słyszysz to? — zapytała Anna.",
+        "voice": "pl-PL-ZofiaNeural",
+        "emotion": "fear",
+        "pace": "normal",
+        "pitch": "high",
+        "pause_before_ms": 400,
+        "pause_after_ms": 400,
+        "sound_cues": []
+      },
+      {
+        "index": 2,
+        "speaker": "narrator",
+        "text": "Zza drzwi dobiegł metaliczny trzask.",
+        "voice": "pl_PL-darkman-medium",
+        "emotion": "tension",
+        "pace": "slow",
+        "pitch": "low",
+        "pause_before_ms": 400,
+        "pause_after_ms": 900,
+        "sound_cues": [{"type": "dsp_preset", "name": "cathedral:kaplica"}]
+      },
+      {
+        "index": 3,
+        "speaker": "Marek",
+        "text": "— Biegnij! — krzyknął Marek.",
+        "voice": "pl-PL-MarekNeural",
+        "emotion": "anger",
+        "pace": "fast",
+        "pitch": "high",
+        "pause_before_ms": 0,
+        "pause_after_ms": 900,
+        "sound_cues": [{"type": "dsp_preset", "name": "radio:wojskowe"}]
+      },
+      {
+        "index": 4,
+        "speaker": "unknown",
+        "text": "— Nie otwierajcie... — powiedział nieznajomy.",
+        "voice": "pl_PL-darkman-medium",
+        "emotion": "whisper",
+        "pace": "slow",
+        "pitch": "low",
+        "pause_before_ms": 900,
+        "pause_after_ms": 900,
+        "sound_cues": [{"type": "dsp_preset", "name": "whisper:intymny"}]
+      }
+    ],
+    "open_questions": ["segment_4: wskaż postać mówiącą tę kwestię"],
+    "warnings": ["Fixture zatwierdzony ręcznie wyłącznie jako dane testowe; nie jest zgodą na renderowanie."]
+  },
+  "expected": {
+    "unknown_speaker_requires_question": true,
+    "must_preserve_source_text": true,
+    "must_not_call_tts": true,
+    "must_not_call_audioticon": true
+  }
+}

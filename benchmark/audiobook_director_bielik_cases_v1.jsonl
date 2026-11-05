@@ -1,0 +1,10 @@
+{"case_id":"clean_narration","scene_id":"case-01","source_text":"Poranek wstał nad miastem. Ulice powoli napełniały się światłem.","expected_unknown":false}
+{"case_id":"one_character_dialogue","scene_id":"case-02","source_text":"— Zaczekaj na mnie — powiedziała Anna.","expected_unknown":false}
+{"case_id":"two_character_dialogue","scene_id":"case-03","source_text":"— Słyszysz ten szum? — zapytała Anna.\n\n— To tylko wiatr — odpowiedział Marek.","expected_unknown":false}
+{"case_id":"unknown_speaker","scene_id":"case-04","source_text":"— Nie otwieraj drzwi — powiedział głos zza ściany.","expected_unknown":true}
+{"case_id":"whisper","scene_id":"case-05","source_text":"— Nie mów nikomu — szepnęła Anna.","expected_unknown":false}
+{"case_id":"shout","scene_id":"case-06","source_text":"— Uciekajcie! — krzyknął Marek.","expected_unknown":false}
+{"case_id":"tension","scene_id":"case-07","source_text":"Zamek zatrzeszczał. Anna wstrzymała oddech.","expected_unknown":false}
+{"case_id":"calm","scene_id":"case-08","source_text":"Deszcz ucichł, a Marek spokojnie zamknął książkę.","expected_unknown":false}
+{"case_id":"long_pause","scene_id":"case-09","source_text":"Nikt się nie odezwał. W pokoju zapadła cisza.","expected_unknown":false}
+{"case_id":"literal_metadata_words","scene_id":"case-10","source_text":"— Ton i Styl tej rozmowy są ważne, ale Uwagi zostaw autorowi — powiedziała Anna.","expected_unknown":false}

@@ -1,0 +1,10 @@
+{"case_id":"missing_segment","mutation":"remove_segment","expected_errors":["segment_text_does_not_cover_source"]}
+{"case_id":"changed_word","mutation":"replace_text","from":"latarnia","to":"latarnię","expected_errors":["segment_text_does_not_cover_source"]}
+{"case_id":"changed_punctuation","mutation":"replace_text","from":"Biegnij!","to":"Biegnij?","expected_errors":["segment_text_does_not_cover_source"]}
+{"case_id":"reordered_segments","mutation":"swap_segments","expected_errors":["segment_text_does_not_cover_source"]}
+{"case_id":"bad_hash","mutation":"bad_hash","expected_errors":["source_hash_mismatch"]}
+{"case_id":"unknown_speaker","mutation":"bad_speaker_id","expected_errors":["segment_4:unknown_speaker_id"]}
+{"case_id":"unknown_preset","mutation":"bad_preset","expected_errors":["segment_2:invalid_dsp_preset"]}
+{"case_id":"approved_model_status","mutation":"approved_status","expected_errors":["unapproved_status"]}
+{"case_id":"extra_text","mutation":"extra_text","expected_errors":["segment_text_does_not_cover_source"]}
+{"case_id":"missing_author_question","mutation":"remove_author_question","expected_errors":["segment_4:missing_author_question"]}
