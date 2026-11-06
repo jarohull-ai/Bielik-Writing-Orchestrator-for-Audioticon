@@ -1,5 +1,7 @@
 # Bielik Writing Orchestrator for Audioticon
 
+[![Offline CI](https://github.com/jarohull-ai/Bielik-Writing-Orchestrator-for-Audioticon/actions/workflows/ci.yml/badge.svg)](https://github.com/jarohull-ai/Bielik-Writing-Orchestrator-for-Audioticon/actions/workflows/ci.yml)
+
 Lekki, lokalny wrapper dla modelu Bielik: Writing Agent oraz **Audiobook Director** dla polskiego tekstu. Repozytorium zawiera kontrakty JSON, pamięć projektu, walidatory i adapter do osobnego projektu Audioticon.
 
 To nie jest nowy Bielik, dostrojony checkpoint ani autonomiczny redaktor literacki. Wagi Bielika nie są częścią tego repozytorium.
@@ -23,6 +25,12 @@ python3 benchmark/run_audiobook_director_fixture_v1.py
 ```
 
 W środowisku deweloperskim zależność testową można zainstalować poleceniem `python3 -m pip install -r requirements-dev.txt`.
+
+## v0.1.1 stabilization
+
+Wydanie `v0.1.1` koncentruje się na powtarzalności testów i zgłaszaniu regresji. GitHub Actions uruchamia wyłącznie testy offline: kompilację, `pytest` i fixture Audiobook Director. CI nie uruchamia Ollamy, Bielika, TTS, DSP, Audioticonu ani renderowania audio.
+
+Każdy pull request do `main` oraz każdy push do `main` musi przejść ten sam zestaw testów. Zależności developerskie znajdują się w `requirements-dev.txt`.
 
 ## Known environment issue
 
@@ -110,6 +118,10 @@ Brak Ollamy lub modelu jest problemem środowiska generatora, a nie testu valida
 - Ocena jakości emocji, tempa i głosu wymaga ręcznej decyzji.
 - Audioticon nie jest zależnością tego repozytorium.
 - Validator nie zastępuje ręcznej akceptacji ani pełnej oceny nagrania.
+
+## Zgłaszanie regresji
+
+Do zgłaszania problemów służą szablony GitHub Issues: bug report, regression report i feature request. Zgłoszenie powinno zawierać wersję, sposób odtworzenia, oczekiwany i rzeczywisty wynik oraz zanonimizowany log testu. Nie należy dołączać wag, blobów Ollama, kluczy ani prywatnych tekstów.
 
 ## Roadmap
 
