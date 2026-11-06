@@ -48,19 +48,23 @@ def main():
         result = validate_proposal(mutate(fixture["proposal"], case), source)
         detected = all(error in result["errors"] for error in case["expected_errors"])
         negative.append({**case, "valid": result["valid"], "errors": result["errors"], "detected": detected})
+    negative_pass = sum(x["detected"] for x in negative)
+    negative_total = len(negative)
     report = {
         "fixture_id": fixture["fixture_id"],
         "positive": {"valid": positive["valid"], "errors": positive["errors"], "warnings": positive["warnings"], "exported_script": exported},
         "negative": negative,
-        "summary": {"positive_pass": positive["valid"], "negative_pass": sum(x["detected"] for x in negative), "negative_total": len(negative), "tts_started": False, "dsp_started": False, "audioticon_started": False, "bielik_used": False},
+        "summary": {"positive_pass": positive["valid"], "negative_pass": negative_pass, "negative_total": negative_total, "tts_started": False, "dsp_started": False, "audioticon_started": False, "bielik_used": False},
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    lines = ["# Audiobook Director — ręcznie zatwierdzony fixture v1", "", "Pozytywny fixture: **PASS**" if positive["valid"] else "Pozytywny fixture: **FAIL**", f"Przypadki negatywne: **{sum(x['detected'] for x in negative)}/{len(negative)}**", "", "Audioticon, TTS, DSP i Bielik nie były uruchamiane. Repozytorium Audioticonu nie było modyfikowane. Wagi Bielika nie były używane ani zmieniane.", "", "## Źródłowy tekst", "", "```text", source, "```", "", "## Ręcznie zatwierdzony JSON", "", "```json", json.dumps(fixture["proposal"], ensure_ascii=False, indent=2), "```", "", "## Decyzje negatywne", ""]
+    lines = ["# Audiobook Director — ręcznie zatwierdzony fixture v1", "", "Pozytywny fixture: **PASS**" if positive["valid"] else "Pozytywny fixture: **FAIL**", f"Przypadki negatywne: **{negative_pass}/{negative_total}**", "", "Audioticon, TTS, DSP i Bielik nie były uruchamiane. Repozytorium Audioticonu nie było modyfikowane. Wagi Bielika nie były używane ani zmieniane.", "", "## Źródłowy tekst", "", "```text", source, "```", "", "## Ręcznie zatwierdzony JSON", "", "```json", json.dumps(fixture["proposal"], ensure_ascii=False, indent=2), "```", "", "## Decyzje negatywne", ""]
     for item in negative: lines.append(f"- `{item['case_id']}`: {'PASS — odrzucono' if item['detected'] else 'FAIL'}; `{', '.join(item['errors'])}`")
     lines += ["", "## Eksport adaptera", "", "```text", exported or "brak — walidacja pozytywna nie przeszła", "```", "", "Fixture ma status `approved_fixture`, który oznacza zatwierdzenie danych testowych przez człowieka. Status `approved` pozostaje zabroniony dla wyniku modelu."]
     REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"positive={'PASS' if positive['valid'] else 'FAIL'} negative={sum(x['detected'] for x in negative)}/{len(negative)}")
+    print(f"positive={'PASS' if positive['valid'] else 'FAIL'} negative={negative_pass}/{negative_total}")
+    if not positive["valid"] or negative_pass != negative_total:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__": main()
