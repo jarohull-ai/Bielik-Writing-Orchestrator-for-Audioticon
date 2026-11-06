@@ -2,9 +2,22 @@
 
 ## Unreleased
 
+- dodano wspólny interfejs wyboru profilu `bielik` / `granite4-3b`;
+- dodano ręczne przejścia propozycji `proposed → approved|rejected` z historią decyzji;
+- akceptacja ponownie sprawdza hash źródła i pełny validator;
 - dodano eksperymentalny profil `granite4:3b` dla Audiobook Director w trybie annotation-only;
 - dodano porównawczy runner holdoutu 120 scen, retry/fallback i raport Granite’a;
 - nie zmieniono wag, wspólnego validatora ani kodu Audioticonu.
+
+## [v0.3.1] — 2026-11-06
+
+Wspólny interfejs profili i ręczne review propozycji Audiobook Director.
+
+- wybór profilu `bielik` / `granite4-3b`;
+- wspólna koperta propozycji z hashem, walidacją i historią decyzji;
+- ręczne przejścia `proposed → approved|rejected`;
+- ponowna walidacja przed akceptacją i blokada nieaktualnego tekstu;
+- brak auto-accept, renderowania i zmian wag.
 
 ## [v0.2.0] — 2026-11-06
 

@@ -61,6 +61,30 @@ Wynik pozostaje \`proposed\`; skrypt nie uruchamia Audioticonu, TTS, DSP ani
 renderowania. Brak lokalnego modelu jest problemem środowiska generatora, nie
 offline testu validatora.
 
+### Wspólny interfejs profili i ręczne review
+
+Oba profile można wybrać przez jeden punkt wejścia:
+
+```bash
+python3 benchmark/run_audiobook_director_profile.py --profile bielik "Tekst sceny."
+python3 benchmark/run_audiobook_director_profile.py --profile granite4-3b "Tekst sceny."
+```
+
+Wynik jest wspólną kopertą propozycji ze statusem `proposed`, identyfikatorem,
+hashem źródła, segmentami, walidacją i historią decyzji. Tylko użytkownik może
+wywołać `approve_proposal` albo `reject_proposal`; akceptacja zawsze wykonuje
+ponowną walidację aktualnego tekstu. Dozwolone są wyłącznie przejścia:
+
+```text
+proposed → approved
+proposed → rejected
+```
+
+Zmiana tekstu, nieaktualny hash, błąd validatora, nieznany mówca bez pytania lub
+brak notatki recenzenta blokują akceptację. Odrzuconej ani zatwierdzonej
+propozycji nie można ponownie otworzyć przez ten interfejs. Status `approved`
+nie uruchamia renderowania i nie oznacza automatycznej zgody na produkcję.
+
 ### Porównanie profili na holdoucie v0.2
 
 Oba profile używają tego samego 120-sceno holdoutu i wspólnego validatora.
