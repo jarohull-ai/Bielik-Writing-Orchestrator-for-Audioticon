@@ -26,6 +26,41 @@ python3 benchmark/run_audiobook_director_fixture_v1.py
 
 W środowisku deweloperskim zależność testową można zainstalować poleceniem `python3 -m pip install -r requirements-dev.txt`.
 
+## v0.2.0 — Audiobook Director profile
+
+Audiobook Director v0.2 jest stabilnym, ale nadal nadzorowanym trybem \`annotation-only\`.
+Bielik proponuje wyłącznie metadane wykonania: narratora, mówcę, emocję, tempo,
+pitch, pauzy i cue DSP. Tekst źródłowy pozostaje własnością adaptera i nie jest
+generowany ponownie przez model.
+
+Profil Bielika potwierdzony holdoutem 120 scen:
+
+- narracja: \`60/60\`;
+- znani mówcy: \`89/89\`;
+- unknown speaker: \`10/10\`;
+- pytania autora: \`10/10\`;
+- validator: \`120/120\`;
+- automatyczny render i auto-accept: \`0\`.
+
+To nie jest autonomiczny reżyser ani system produkcyjny bez nadzoru. Każdy wynik
+ma status \`proposed\`, a ręczna akceptacja jest wymagana przed użyciem w Audioticonie.
+
+### Rekomendowane zastosowania
+
+- spokojna i opisowa narracja po polsku;
+- szept, intymny ton, podstawowe emocje;
+- propozycje pauz i tempa;
+- ostrożne przypisywanie narracji do \`narrator\`;
+- przygotowanie adnotacji do późniejszej oceny autora.
+
+### Ograniczenia
+
+- brak automatycznego renderowania;
+- brak automatycznej akceptacji;
+- złożone dialogi i decyzje artystyczne wymagają ręcznej kontroli;
+- Bielik nie zmienia tekstu i nie powinien zastępować autora ani lektora;
+- TTS, DSP i Audioticon pozostają poza tym repozytorium.
+
 ## v0.1.1 stabilization
 
 Wydanie `v0.1.1` koncentruje się na powtarzalności testów i zgłaszaniu regresji. GitHub Actions uruchamia wyłącznie testy offline: kompilację, `pytest` i fixture Audiobook Director. CI nie uruchamia Ollamy, Bielika, TTS, DSP, Audioticonu ani renderowania audio.
