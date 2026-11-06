@@ -28,6 +28,9 @@ Workflow: `.github/workflows/ci.yml`
 Run dla commita `de31a5988438b8a551bca3dd912f8b9f2b2ba67a`: **success**  
 Run URL: https://github.com/jarohull-ai/Bielik-Writing-Orchestrator-for-Audioticon/actions/runs/42173138432
 
+Run pull requesta `#1`: **success**
+Run URL: https://github.com/jarohull-ai/Bielik-Writing-Orchestrator-for-Audioticon/actions/runs/42173387943
+
 Pierwszy run ujawnił błąd konfiguracji cache `setup-python`: akcja szukała `requirements.txt` lub `pyproject.toml`. Poprawiono to przez jawne `cache-dependency-path: requirements-dev.txt`. Nie zmieniano kodu aplikacji.
 
 Workflow uruchamia się dla:
@@ -83,6 +86,4 @@ README zawiera niezależny link do projektu Audioticon oraz wyjaśnia, że wynik
 
 ## Decyzja
 
-**READY_FOR_TAG** po udanym runie CI dla commita na `main` i po potwierdzeniu runu CI dla tagu `v0.1.1`.
-
-Tag i release zostaną utworzone dopiero po spełnieniu obu warunków.
+**BLOCKED** — PR `#1` ma zaliczone CI, ale wymaga jednego review zgodnie z ochroną `main`. Nie wykonano merge’a administracyjnego, taga ani release’u. Po review trzeba ponownie potwierdzić CI na `main`, a następnie uruchomić CI dla taga `v0.1.1` przed publikacją.
