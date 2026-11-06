@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.2.0] — 2026-11-06
+
+Audiobook Director v0.2 — rozszerzona walidacja annotation-only.
+
+- dodano holdout 120 polskich scen w 12 kategoriach;
+- dodano automatyczny runner, wyniki JSON i raport diagnostyczny;
+- poprawiono deterministyczne dzielenie scen wielomówcowych;
+- dodano segment-scoped pytania autora dla \`unknown\`;
+- potwierdzono \`120/120\` poprawnego JSON i przejść validatora;
+- potwierdzono zachowanie tekstu \`120/120\`, narrator \`60/60\` i unknown \`10/10\`;
+- wszystkie wyniki pozostają \`proposed\`, bez auto-accept i renderowania;
+- nie dodano wag Bielika, TTS, DSP ani kodu Audioticonu.
+
 ## [v0.1.1] — 2026-11-06
 
 Stabilizacja repozytorium i powtarzalności testów.
