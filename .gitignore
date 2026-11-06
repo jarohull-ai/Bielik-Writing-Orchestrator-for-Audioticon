@@ -10,6 +10,7 @@ env/
 # reports remain publishable documentation.
 benchmark/results/*
 !benchmark/results/.gitkeep
+!benchmark/results/audiobook_director_v0_2.json
 experiment_log/*.json
 experiment_log/*.log
 experiment_log/*.tmp

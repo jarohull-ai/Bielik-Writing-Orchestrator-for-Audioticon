@@ -31,7 +31,9 @@ def expected_speaker(text: str) -> str:
         return "narrator"
     match = re.search(r"\b(Anna|Marek)\b\s+(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)", text)
     if not match:
-        match = re.search(r'(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)\s+(?:[^"].*?\s+)?\b(Anna|Marek)\b', text)
+        # Do not scan through later narration: a later name must not replace
+        # the first explicit speaker attribution.
+        match = re.search(r'(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)\s+\b(Anna|Marek)\b', text)
     return match.group(1) if match else "unknown"
 
 
