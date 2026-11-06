@@ -6,13 +6,27 @@ env/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-benchmark/results/
-experiment_log/
+# Generated benchmark output is local by default, while Markdown audit/release
+# reports remain publishable documentation.
+benchmark/results/*
+!benchmark/results/.gitkeep
+experiment_log/*.json
+experiment_log/*.log
+experiment_log/*.tmp
 *.mp3
 *.wav
 *.m4b
 *.gguf
 *.safetensors
 *.bin
+*.blob
+*.onnx
+*.pt
+*.pth
+*.onnx.data
+*.flac
+*.ogg
+*.opus
+*.mp4
 .env
 .DS_Store
