@@ -9,6 +9,16 @@
 - dodano porównawczy runner holdoutu 120 scen, retry/fallback i raport Granite’a;
 - nie zmieniono wag, wspólnego validatora ani kodu Audioticonu.
 
+## [v0.3.1] — 2026-11-06
+
+Wspólny interfejs profili i ręczne review propozycji Audiobook Director.
+
+- wybór profilu `bielik` / `granite4-3b`;
+- wspólna koperta propozycji z hashem, walidacją i historią decyzji;
+- ręczne przejścia `proposed → approved|rejected`;
+- ponowna walidacja przed akceptacją i blokada nieaktualnego tekstu;
+- brak auto-accept, renderowania i zmian wag.
+
 ## [v0.2.0] — 2026-11-06
 
 Audiobook Director v0.2 — rozszerzona walidacja annotation-only.
