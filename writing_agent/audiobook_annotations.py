@@ -19,20 +19,54 @@ def segment_source(source_text: str) -> list[dict[str, Any]]:
         # Keep narration and a following dash/quote dialogue as separate local
         # segments. Whitespace between segments is still verified by the source
         # coverage validator; no source characters are regenerated.
-        parts.extend(piece.strip() for piece in re.split(r"(?<=[.!?])\s+(?=[—–„\"])", paragraph) if piece.strip())
+        parts.extend(piece.strip() for piece in re.split(
+            r"(?<=[.!?])\s+(?=(?:[—–„\"]|(?:Anna|Marek)\s+"
+            r"(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|"
+            r"krzyknęła|krzyknął|odpowiedziała|odpowiedział)\b))", paragraph
+        ) if piece.strip())
     return [{"segment_id": f"segment_{index + 1:03d}", "index": index, "text": text} for index, text in enumerate(parts)]
 
 
 def expected_speaker(text: str) -> str:
     """Conservative speaker constraint; it never guesses from narrative content."""
     stripped = text.strip()
+    leading_attribution = re.match(
+        r"^(Anna|Marek)\s+(?:powiedziała|powiedział|zapytała|zapytał|"
+        r"szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)\b",
+        stripped,
+    )
+    if leading_attribution:
+        return leading_attribution.group(1)
     dialogue = stripped.startswith(("—", "–", "„", '"'))
     if not dialogue:
         return "narrator"
     match = re.search(r"\b(Anna|Marek)\b\s+(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)", text)
     if not match:
-        match = re.search(r'(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)\s+(?:[^"].*?\s+)?\b(Anna|Marek)\b', text)
+        # Do not scan through later narration: a later name must not replace
+        # the first explicit speaker attribution.
+        match = re.search(r'(?:powiedziała|powiedział|zapytała|zapytał|szepnęła|szepnął|krzyknęła|krzyknął|odpowiedziała|odpowiedział)\s+\b(Anna|Marek)\b', text)
     return match.group(1) if match else "unknown"
+
+
+def ensure_author_questions(response: dict[str, Any], segments: list[dict[str, Any]]) -> dict[str, Any]:
+    """Add only an explicit segment-scoped question; never infer a speaker."""
+    questions = response.get("author_questions")
+    if not isinstance(questions, list):
+        questions = []
+        response["author_questions"] = questions
+    warnings = response.get("warnings")
+    if not isinstance(warnings, list):
+        warnings = []
+        response["warnings"] = warnings
+    segment_ids = {segment["segment_id"] for segment in segments}
+    for annotation in response.get("annotations", []):
+        if not isinstance(annotation, dict) or annotation.get("speaker") != "unknown":
+            continue
+        segment_id = annotation.get("segment_id")
+        if segment_id in segment_ids and not any(segment_id in str(question) for question in questions):
+            questions.append(f"{segment_id}: Kto wypowiada ten fragment?")
+            warnings.append(f"adapter_added_author_question:{segment_id}")
+    return response
 
 
 def validate_annotations(response: Any, segments: list[dict[str, Any]]) -> dict[str, Any]:
