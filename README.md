@@ -61,6 +61,30 @@ Wynik pozostaje \`proposed\`; skrypt nie uruchamia Audioticonu, TTS, DSP ani
 renderowania. Brak lokalnego modelu jest problemem środowiska generatora, nie
 offline testu validatora.
 
+### Porównanie profili na holdoucie v0.2
+
+Oba profile używają tego samego 120-sceno holdoutu i wspólnego validatora.
+Wynik Granite’a jest bezpieczny, ale słabszy w dialogach i pauzach:
+
+| Metryka | Bielik | Granite 4 3B |
+|---|---:|---:|
+| JSON | 120/120 | 119/120 |
+| Validator | 120/120 | 119/120 |
+| Tekst źródłowy | 120/120 | 120/120 |
+| Narrator | 60/60 | 60/60 |
+| Znani mówcy | 89/89 | 87/89 |
+| Unknown | 10/10 | 10/10 |
+| Pytania autora | 10/10 | 10/10 |
+| Pauzy | 138/159 | 74/157 |
+| Retry | — | 2 |
+| FAIL | 0 | 1 |
+| Średni czas generowania | — | ok. 2,52 s |
+
+Wrapper jest model-agnostic na poziomie kontraktu, ale każdy model wymaga
+osobnego promptu, parametrów, retry/fallback i benchmarku. Bielik pozostaje
+profilem rekomendowanym; Granite 4 3B pozostaje profilem bezpiecznym,
+eksperymentalnym i słabszym dla dialogów oraz pauz.
+
 ### Rekomendowane zastosowania
 
 - spokojna i opisowa narracja po polsku;
