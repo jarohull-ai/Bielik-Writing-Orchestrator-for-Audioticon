@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- dodano eksperymentalny profil `granite4:3b` dla Audiobook Director w trybie annotation-only;
+- dodano porównawczy runner holdoutu 120 scen, retry/fallback i raport Granite’a;
+- nie zmieniono wag, wspólnego validatora ani kodu Audioticonu.
+
 ## [v0.2.0] — 2026-11-06
 
 Audiobook Director v0.2 — rozszerzona walidacja annotation-only.

@@ -45,6 +45,22 @@ Profil Bielika potwierdzony holdoutem 120 scen:
 To nie jest autonomiczny reżyser ani system produkcyjny bez nadzoru. Każdy wynik
 ma status \`proposed\`, a ręczna akceptacja jest wymagana przed użyciem w Audioticonie.
 
+### Profile modeli
+
+Repozytorium obsługuje również eksperymentalny profil \`granite4:3b\`. Granite
+korzysta z tego samego kontraktu annotation-only, segmentera i validatora, ale ma
+osobny prompt, parametry generowania oraz retry/fallback. Jest to porównawczy
+profil propozycji, nie zmodyfikowany model ani zamiennik Bielika. Uruchomienie
+holdoutu Granite’a wymaga lokalnej Ollamy i dostępnego modelu:
+
+```bash
+python3 benchmark/run_audiobook_director_granite4.py
+```
+
+Wynik pozostaje \`proposed\`; skrypt nie uruchamia Audioticonu, TTS, DSP ani
+renderowania. Brak lokalnego modelu jest problemem środowiska generatora, nie
+offline testu validatora.
+
 ### Rekomendowane zastosowania
 
 - spokojna i opisowa narracja po polsku;
