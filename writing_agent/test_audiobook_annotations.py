@@ -1,4 +1,4 @@
-from writing_agent.audiobook_annotations import expected_speaker, merge_annotations, segment_source, validate_annotations
+from writing_agent.audiobook_annotations import ensure_author_questions, expected_speaker, merge_annotations, segment_source, validate_annotations
 
 
 SOURCE = "Anna spojrzała na drzwi.\n\n— Nie otwieraj — powiedział nieznany głos."
@@ -41,6 +41,25 @@ def test_speaker_constraint_is_conservative():
     assert expected_speaker("Opis ulicy i deszczu.") == "narrator"
     assert expected_speaker("— Zaczekaj — powiedziała Anna.") == "Anna"
     assert expected_speaker("— Kto tam? — dobiegło zza drzwi.") == "unknown"
+
+
+def test_multispeaker_attribution_is_split_conservatively():
+    source = "— Żółć brzmi inaczej — powiedziała Anna. Marek odpowiedział: „To akcent.”"
+    segments = segment_source(source)
+    assert len(segments) == 2
+    assert [expected_speaker(item["text"]) for item in segments] == ["Anna", "Marek"]
+
+
+def test_adapter_adds_segment_scoped_question_without_guessing():
+    segments = segment_source("— Kto tam? — dobiegło zza drzwi.")
+    response = {
+        "annotations": [{"segment_id": "segment_001", "speaker": "unknown"}],
+        "author_questions": ["Czy to ktoś z pokoju?"],
+        "warnings": [],
+    }
+    result = ensure_author_questions(response, segments)
+    assert any("segment_001" in question for question in result["author_questions"])
+    assert result["annotations"][0]["speaker"] == "unknown"
 
 
 if __name__ == "__main__":

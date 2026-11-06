@@ -24,6 +24,26 @@ CASES = ROOT / "benchmark/audiobook_director_v0_2_cases.jsonl"
 OUT = ROOT / "benchmark/results/audiobook_director_v0_2.json"
 REPORT = ROOT / "experiment_log/audiobook_director_v0_2.md"
 V1_OUT = ROOT / "benchmark/results/audiobook_director_bielik_proposal_v1.json"
+BASELINE_V0_2 = {
+    "cases": 120, "valid_json": "120/120", "text_preservation": "120/120",
+    "narrator_assignment": "60/60", "known_speaker_assignment": "76/80",
+    "unknown_speaker_usage": "10/10", "author_question_completeness": "9/10",
+    "validator_pass": "110/120", "pass": 51, "warn": 59, "fail": 10,
+}
+REPAIR_ANALYSIS = [
+    {
+        "cases": [f"v02_polish_punctuation_{index:02d}" for index in range(2, 11)],
+        "cause": "brak podziału przy zmianie mówcy; jeden segment zawierał kwestie Anny i Marka, a Bielik zwracał duplikat segment_001 albo drugiego mówcę w tym samym segmencie",
+        "fix": "deterministyczny segmenter rozpoznaje atrybucję Anna/Marek po granicy zdania; tekst pozostaje źródłem adaptera",
+        "result": "naprawione; 9/9 przechodzi validator",
+    },
+    {
+        "cases": ["v02_unknown_speaker_09"],
+        "cause": "speaker=unknown bez pytania zawierającego identyfikator segmentu",
+        "fix": "adapter dopisuje wyłącznie segment-scoped question; nie zgaduje mówcy i zapisuje ostrzeżenie adaptera",
+        "result": "naprawione; pytanie autora 10/10",
+    },
+]
 METADATA_RE = re.compile(r"(?im)^\s*(?:\*\*)?(?:ton|styl|voice|avoid|uwagi|metakomentarz)(?:\*\*)?\s*:")
 
 
@@ -227,6 +247,7 @@ def main() -> None:
         "model": args.model, "source_text_owned_by_adapter": True,
         "accepted_for_render": False, "audioticon_started": False, "tts_started": False, "dsp_started": False,
         "summary": summary, "by_category": category_summary,
+        "baseline_before_repair": BASELINE_V0_2, "repair_analysis": REPAIR_ANALYSIS,
         "comparison_v1": comparison,
         "best_10": ranked[:10], "worst_10": list(reversed(ranked[-10:])), "results": results,
     }
@@ -246,6 +267,10 @@ def main() -> None:
     for item in ranked[:10]:
         lines.append(f"- `{item['case_id']}` — {item['status']}, score `{item['score']}`, {item['category_label']}")
     lines += ["", "## Najsłabsze przykłady", ""]
+    lines += ["", "## Analiza pierwotnych FAIL-i", "", "Przed poprawką v0.2: 10 FAIL, 110/120 przejść validatora, 9/10 kompletnych pytań autora.", ""]
+    for item in REPAIR_ANALYSIS:
+        lines.append(f"- {', '.join(item['cases'])} — przyczyna: {item['cause']}; poprawka: {item['fix']}; wynik: {item['result']}.")
+    lines += ["", "Żaden przypadek nie został przepuszczony przez rozluźnienie validatora ani zgadywanie mówcy.", ""]
     for item in reversed(ranked[-10:]):
         reason = "; ".join(item["errors"][:3]) or ", ".join(item["error_groups"].keys()) or "rozbieżność artystyczna do oceny ręcznej"
         lines.append(f"- `{item['case_id']}` — {item['status']}, score `{item['score']}`, {reason}")

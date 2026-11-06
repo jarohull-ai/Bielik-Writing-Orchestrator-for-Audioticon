@@ -10,7 +10,7 @@ from urllib.request import Request, urlopen
 from typing import Any
 
 from .audiobook_contract import source_hash
-from .audiobook_annotations import expected_speaker, merge_annotations, segment_source
+from .audiobook_annotations import ensure_author_questions, expected_speaker, merge_annotations, segment_source
 from .audiobook_validator import validate_proposal
 
 PROPOSAL_SYSTEM = """Jesteś reżyserem audiobooka w trybie proposal_only.
@@ -162,6 +162,7 @@ def propose_annotations(source_text: str, model: str = "bielik-4.5b-v3:q5", proj
         value = json.loads(raw.strip().strip("`").removeprefix("json").strip())
         if not isinstance(value, dict):
             raise ValueError("Odpowiedź Bielika nie jest obiektem JSON")
+        value = ensure_author_questions(value, segments)
         proposal, validation = merge_annotations(source_text, value, project_id, scene_id)
         return {"mode": "proposal_only", "annotation_only": True, "model": model, "project_id": project_id, "scene_id": scene_id,
                 "raw_response": raw, "annotations": value.get("annotations") if isinstance(value, dict) else None,
