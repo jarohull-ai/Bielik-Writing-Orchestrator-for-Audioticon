@@ -8,7 +8,7 @@ Commit zdalny audytowany z gałęzi `main`: `7a18442095e540ad0766457701cd8e2de5a
 
 Audyt obejmował świeży eksport gałęzi `main`, zawartość repozytorium, dokumentację, reguły ignorowania plików, skany prywatnych artefaktów oraz testy offline. Standardowy `git clone` na tej maszynie zatrzymał się przed pobraniem na błędzie systemowej biblioteki `libcurl-gnutls`; do audytu użyto równoważnego archiwum źródłowego GitHub dla aktualnego commita z API. Nie modyfikowano wag Bielika ani kodu Audioticonu. Nie tworzono taga ani release’u.
 
-README, `.gitignore`, `requirements-dev.txt` i ten raport są przygotowane w lokalnym checkoutcie roboczym. Nie zostały wypchnięte do GitHub; zdalna gałąź `main` pozostaje niezmieniona.
+README, `.gitignore`, `requirements-dev.txt` i ten raport należą do audytowanego zestawu release’owego na gałęzi `main`.
 
 ## Wyniki audytu zawartości
 
